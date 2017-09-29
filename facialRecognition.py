@@ -10,7 +10,7 @@ def main():
     try:
         face_cascade = cv2.CascadeClassifier('/Users/ChrisErnst/anaconda/envs/py35/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
         eye_cascade = cv2.CascadeClassifier('/Users/ChrisErnst/anaconda/envs/py35/share/OpenCV/haarcascades/haarcascade_eye.xml')
-        # If you have trouble finding the xml files, search your computer and alter the path
+        # If you have trouble finding the xml files, search your computer for 'haarcascade_frontalface_default.xml' and 'haarcascade_eye.xml' and alter the above path
         
         imageDirectory = '/Users/ChrisErnst/Development/Python/computerVision/facialRecognition/images/'
         os.chdir(imageDirectory)
@@ -18,7 +18,7 @@ def main():
         
         plt.figure('Facial Recognition')
         plt.suptitle('Facial Recognition', size=20)
-        # Generate a figure named 'Face Recognition'
+        # Generate a figure named 'Face Recognition' and add a title
         
         imageName = 'apple.jpg'
         # Set the image we want to analyze
@@ -31,14 +31,12 @@ def main():
         upperLeft.set_title('Original Image')
         # Show the original image using PIL and plot using pyplot in the upper left
         
-        
         gray = array(Image.open(imageName).convert('L'))
         upperRight = plt.subplot(222)
         plt.axis('off')
         plt.imshow(gray, cmap='gray')
         upperRight.set_title('Grayscale to Analyze')
         # Convert to gray with PIL and plot using pyplot in the upper right
-        
         
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
         
