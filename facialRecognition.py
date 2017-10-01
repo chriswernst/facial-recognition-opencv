@@ -8,8 +8,8 @@ import os
 def main():
 
     try:
-        face_cascade = cv2.CascadeClassifier('/Users/ChrisErnst/anaconda/envs/py35/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
-        eye_cascade = cv2.CascadeClassifier('/Users/ChrisErnst/anaconda/envs/py35/share/OpenCV/haarcascades/haarcascade_eye.xml')
+        face_cascade = cv2.CascadeClassifier('/Users/UserName/anaconda/envs/py35/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
+        eye_cascade = cv2.CascadeClassifier('/Users/UserName/anaconda/envs/py35/share/OpenCV/haarcascades/haarcascade_eye.xml')
         # If you have trouble finding the xml files, search your computer for 'haarcascade_frontalface_default.xml' and 'haarcascade_eye.xml' and alter the above path
         
         imageDirectory = '/Users/ChrisErnst/Development/Python/computerVision/facialRecognition/images/'
