@@ -19,13 +19,15 @@
 [image13]: ./images/willow.jpg
 [image14]: ./images/willowfaceDetect.jpg
 
-We will step through a brief overview of how to find faces in images using **Python 3.5**
+We will step through a brief overview of how to find faces and eyes in images using **Python 3.5**
 ###
 ![][image10]
-
 ##### *(A tribute to the father of Python)*
 
 ###
+
+###
+
 We will leverage the following Python Modules:
 - OpenCV (cv2)
 - PIL
@@ -33,7 +35,7 @@ We will leverage the following Python Modules:
 - matplotlib.pyplot
 - os
 
-OpenCV will do the majority of the heavy lifting. I've adopted [an example from the documentation, here.](http://docs.opencv.org/3.0-beta/doc/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html#face-detection)
+OpenCV will do the majority of the heavy lifting. I've adopted an example from the documentation, [here.](http://docs.opencv.org/3.0-beta/doc/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html#face-detection)
 
 I would suggest you check out the [documentation](http://docs.opencv.org/master/d6/d00/tutorial_py_root.html) for implementation: 
 ###
@@ -48,7 +50,7 @@ One for the eyes:
 ```
 eye_cascade = cv2.CascadeClassifier('/Users/UserName/anaconda/envs/py35/share/OpenCV/haarcascades/haarcascade_eye.xml')
 ```        
-With Anaconda, my XML files were located at the above path. If you're having trouble finding the files, search your computer for `haarcascade_frontalface_default.xml` and `haarcascade_eye.xml` and alter the above path to point to them.
+Using Anaconda, my XML files were located at the above path. If you're having trouble finding the files, search your computer for `haarcascade_frontalface_default.xml` and `haarcascade_eye.xml` and alter the above path to point to them.
 
 We're going to use `matplotlib.pyplot` to open a figure and title it:
 
@@ -71,7 +73,7 @@ img = array(Image.open(imageName))
 upperLeft = plt.subplot(221)
 ```
 ###
-Side note: I always wondered what the numbers (221,222,223,224) in `pyplot` dictated, it finally clicked that it stands for a `2x2` table of photos, and the third digit dictates the position of the image. Seems obvious now...For example, you could plot 16 photos in (441,442,443,...,).
+Side note: I always wondered what the numbers (221,222,223,224) in `pyplot` dictated -- it stands for a `2x2` table of photos, and the third digit dictates the position of the image. Seems obvious now...For example, you could plot 16 photos in (441,442,443,...,).
 
 Anyway, back to it. 
 
@@ -95,6 +97,10 @@ for (x,y,w,h) in faces:
 ```
 ###
 This yields the original image, the grayscale image for analysis, and the detected faces plotted in our figure:
+
+###
+###
+
 ![][image2]
 ###
 Next is to find the eyes, and draw green rectangles around them. This can get a bit tricky, and is often where most inaccuracies occur. We find the eyes with:
@@ -110,7 +116,7 @@ Of the images I tested, the classifier did best on Guido's picture to categorize
 ###
 ![][image10]
 ###
-The classifier will often think the mouth or the nose is an eye (assumingly due to the pixel intensity differential that is similar to the eyes). Like in this image of Sheryl Sandberg:
+The classifier will often incorrectly classify the mouth or the nose as an eye (assumingly due to the pixel intensity differential that is similar to the eyes). For example, this image of Sheryl Sandberg:
 ###
 ![][image12]
 ###
@@ -128,5 +134,11 @@ Also, if there are too many faces in the image, this can also be an issue. As se
 ![][image14]
 ###
 
-### *(README In Progress)*
+###
+
+As you can tell, this classifer could be improved when it comes to eye classification. However, for a pre-built library, I'm happy with what it can do.
+
+
+
+### Next steps: Implementing this openCV library on the Raspberry Pi Zero W... then perhaps a *smile detector!*
 
